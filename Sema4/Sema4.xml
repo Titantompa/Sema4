@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <mailservers>
+    <mailaccount server="" port="" login="" password=""/>
+  </mailservers>
+  <handlers>
+    <regexmatcher>
+      <!-- :-) :) Happy -->
+      <match regex=":-?\)" state="e0721126-9dd8-46a4-a432-078cf0184697" priority="1" duration="1000000000">
+        <colorsequence>
+          <color red="0" green="255" blue="0" duration="3600000"/>
+        </colorsequence>
+        <!-- soundeffect filename="guid-guid-guid-guid.wav"/-->
+      </match>
+      <!-- ;-) ;) Winking -->
+      <match regex=";-?\)" state="e0721126-9dd8-46a4-a432-078cf0184697" priority="1" duration="300000">
+        <colorsequence>
+          <color red="0" green="255" blue="0" duration="1000"/>
+          <color red="255" green="255" blue="0" duration="333"/>
+        </colorsequence>
+        <!-- soundeffect filename="guid-guid-guid-guid.wav"/-->
+      </match>
+      <!-- :-( :( Sad -->
+      <match regex=":-?\(" state="e0721126-9dd8-46a4-a432-078cf0184697" priority="1" duration="1000000000">
+        <colorsequence>
+          <color red="0" green="0" blue="255" duration="3600000"/>
+        </colorsequence>
+        <!-- soundeffect filename="guid-guid-guid-guid.wav"/-->
+      </match>
+      <!-- :-| :-/ Disappointed etc -->
+      <match regex=":-?(\\|/|\|)" state="e0721126-9dd8-46a4-a432-078cf0184697" priority="1" duration="1000000000">
+        <colorsequence>
+          <color red="0" green="255" blue="255" duration="3600000"/>
+        </colorsequence>
+        <!-- soundeffect filename="guid-guid-guid-guid.wav"/-->
+      </match>
+      <!-- <3 :-* Love -->
+      <match regex="(&lt;3)|(:-\*)" state="e0721126-9dd8-46a4-a432-078cf0184697" priority="1" duration="1000000000">
+        <colorsequence>
+          <color red="255" green="0" blue="0" duration="3600000"/>
+        </colorsequence>
+        <!-- soundeffect filename="guid-guid-guid-guid.wav"/-->
+      </match>
+      <!-- :v Pac Man -->
+      <match regex=":v" state="e0721126-9dd8-46a4-a432-078cf0184697" priority="1" duration="60000">
+        <colorsequence>
+          <color red="255" green="0" blue="0" duration="200"/>
+          <color red="255" green="255" blue="0" duration="200"/>
+          <color red="0" green="255" blue="0" duration="200"/>
+          <color red="0" green="255" blue="255" duration="200"/>
+          <color red="0" green="0" blue="255" duration="200"/>
+          <color red="255" green="0" blue="255" duration="200"/>
+        </colorsequence>
+        <!-- soundeffect filename="guid-guid-guid-guid.wav"/-->
+      </match>
+      <!-- :-o :-O Gasp -->
+      <match regex=":-?[oO]" state="e0721126-9dd8-46a4-a432-078cf0184697" priority="1" duration="60000">
+        <colorsequence>
+          <color red="0" green="0" blue="255" duration="1000"/>
+          <color red="255" green="0" blue="255" duration="1000"/>
+        </colorsequence>
+        <!-- soundeffect filename="guid-guid-guid-guid.wav"/-->
+      </match>
+      <!-- o.O O.o (O.o) (o.O) What the frigg? -->
+      <match regex="[oO][\._][oO]" state="e0721126-9dd8-46a4-a432-078cf0184697" priority="1" duration="1000000000">
+        <colorsequence>
+          <color red="255" green="0" blue="255" duration="10000"/>
+        </colorsequence>
+        <!-- soundeffect filename="guid-guid-guid-guid.wav"/-->
+      </match>
+    </regexmatcher>
+  </handlers>
+</configuration>
