@@ -47,6 +47,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AE.Net.Mail">
+      <HintPath>..\packages\AE.Net.Mail.1.7.10.0\lib\net45\AE.Net.Mail.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -85,12 +88,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\aenetmail-master\AE.Net.Mail.csproj">
-      <Project>{68e9cf8c-ab54-4cc7-a34f-c7f469e4efe0}</Project>
-      <Name>AE.Net.Mail</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Configuration.xml" />

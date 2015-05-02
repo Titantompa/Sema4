@@ -13,8 +13,7 @@ namespace Sema4
 {
     internal class Program
     {
-        public static bool IsRunningMono;
-
+        // TODO: Configurable names of mailboxes
         private static readonly List<String> Mailboxes = new List<string> {"INBOX", "Spam"};
 
         private static readonly List<IMailHandler> MailHandlers = new List<IMailHandler>();
@@ -27,7 +26,7 @@ namespace Sema4
 
             lightsManager.Initialize();
 
-            // Läs in konfigurationsfilen
+            // Read configuration file
 
 #if __MonoCS__
             var config = XDocument.Load(Properties.Settings.Default.ResourcePath + "/Sema4.xml");
@@ -42,8 +41,6 @@ namespace Sema4
             MailHandlers.Add(new RegexMailHandler(_stateManager));
             MailHandlers.Add(new ResetMailHandler(_stateManager));
             MailHandlers.Add(new FileUploadMailHandler(Properties.Settings.Default.ResourcePath));
-
-            IsRunningMono = Type.GetType("Mono.Runtime") != null;
 
             foreach (var mailHandler in MailHandlers)
                 mailHandler.StartUp(config);
@@ -78,7 +75,7 @@ namespace Sema4
                             // Select a mailbox. Case-insensitive
                             var mbox = ic.SelectMailbox(mailbox);
 
-                            // AOL doesn't show unread or unseen :-(
+                            // AOL doesn't show if mail is unread or unseen :-(
 
                             var messageCount = mbox.NumMsg;
                             if (messageCount > 0)
@@ -86,12 +83,9 @@ namespace Sema4
                                 // Messages in inbox
                                 Console.WriteLine("MessageCount = {0}", ic.GetMessageCount());
 
-                                // TODO: När ska vi egentligen hämta bodyn om den behövs??
                                 var messages = ic.GetMessages(0, messageCount - 1, false, true);
 
-                                // TODO: It should do these in order of appearance...
-
-                                foreach (var message in messages)
+                                foreach (var message in messages.OrderBy(x=>x.Date))
                                 {
                                     Console.WriteLine(
                                         "Letting handlers have a go at message {0}, received at {1}, subject: {2}",
@@ -133,9 +127,10 @@ namespace Sema4
                     });
                 }
 
-                // Städa undan grejer direkt, i det här läget ska vi vara tillbaka på ruta ett
+                // Force a garbage collect. This is supposed to run as a demon and we want it to have as small footprint as possible
                 GC.Collect(3, GCCollectionMode.Forced);
 
+                // TODO: Configurable interval!
                 Thread.Sleep(30000);
             }
         }
